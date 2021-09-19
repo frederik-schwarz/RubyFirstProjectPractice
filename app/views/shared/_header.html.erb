@@ -1,0 +1,45 @@
+<section class="hero is-link is-small">
+  <!-- Hero head: will stick at the top -->
+  <div class="hero-head">
+    <nav class="navbar">
+      <div class="container">
+        <div class="navbar-brand">
+          <%= link_to root_path, class: 'navbar-item' do %>
+          <span class='the-text-weight-bold is-size-4 ml-4'>Taxed</span>
+          <% end %>
+          <span class="navbar-burger" data-target="navbarMenuHeroC">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+          </div>
+        <div id="navbarMenuHeroC" class="navbar-menu">
+          <div class="navbar-end">
+          <span class="navbar-item">
+            <%= link_to new_entry_path, class: "button is-success" do %>
+            <span>Create new entry</span>
+            
+            <% end %>
+            </span>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+  <!-- Hero content: will be in the middle -->
+  <div class="hero-body">
+    <div class="container has-text-centered">
+      <h1 class="title">
+      <%puts(content_for(:title))%>
+      <% if content_for(:title) %>
+        <%= yield :title %>
+        <% else %>
+        Taxed
+      <%end%>
+      </h1>
+    </div>
+  </div>
+
+
+</section>

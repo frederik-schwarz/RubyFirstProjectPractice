@@ -1,0 +1,34 @@
+<% content_for :title do %>
+ Taxed &ndash; <%= DateTime.now.to_s(:nice_date) %>
+<% end %>
+
+<table>
+
+
+<div class='columns mt-6 is-centered'>
+    <% @entries.each do |entry| %>
+      <div class='column is-one-quarter'>
+        <div class='card'>
+          <header class='card-header'>
+          <p class='card-header-title'><%= entry.job_name %> </p>
+          </header>
+          <div class='card-content'>
+            <div class='content'>
+                   <p><span class='has-text-weight-bold'><%= entry.total_income %> Salary</span></p>
+                   <p><span class='has-text-weight-bold'><%= entry.tax_bracket %>% Tax bracket</span></p>
+                   <p><span class='has-text-weight-bold'><%= (entry.tax_bracket.to_i * 0.01) * entry.total_income %> Total taxed yearly</span></p>
+                  <p class='italic'>Posted <%= time_ago_in_words(entry.created_at)%> ago</p>
+            </div>
+          </div>
+      <div class='card-footer'>
+      <%= link_to 'Show', entry, class: 'card-footer-item' %>
+      <%= link_to 'Edit', edit_entry_path(entry), class: 'card-footer-item'  %>
+      <%= link_to 'Destroy', entry, method: :delete, data: { confirm: 'Are you sure?' }, class: 'card-footer-item'  %>
+      </div>
+      </div>
+      </div>
+    <% end %>
+    
+
+
+
